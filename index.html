@@ -1,15 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SignSight Web Demo</title>
+  <meta charset="UTF-8">
+  <title>SignSight: AI Gesture Translator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <style>
-    body { font-family: Arial; text-align: center; padding: 40px; }
-    button { margin: 10px; padding: 15px 30px; font-size: 18px; }
-    #output { margin-top: 30px; font-size: 20px; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #333;
+      font-size: 2.5em;
+    }
+    button {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #output {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #444;
+    }
+    .vibration {
+      font-size: 24px;
+      margin-top: 10px;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
   </style>
 </head>
 <body>
-  <h1>SignSight: AI Gesture Translator</h1>
+  <h1><i class="fas fa-hands"></i> SignSight: AI Gesture Translator</h1>
   <p>Click a gesture to simulate translation and vibration feedback:</p>
 
   <button onclick="translate('YES')">YES</button>
@@ -31,8 +70,12 @@
 
     function translate(text) {
       const vibration = patterns[text] || "Unknown";
-      document.getElementById("output").innerHTML =
-        `<strong>Gesture:</strong> ${text}<br><strong>Vibration:</strong> ${vibration}`;
+      document.getElementById("output").innerHTML = `
+        <div class="animate__animated animate__fadeIn">
+          <strong>Gesture:</strong> ${text}<br>
+          <strong>Vibration:</strong> <span class="vibration">${vibration}</span>
+        </div>
+      `;
     }
   </script>
 </body>
