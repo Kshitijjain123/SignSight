@@ -3,7 +3,7 @@ from tensorflow.keras.models import load_model
 import numpy as np
 
 app = Flask(__name__)
-model = load_model("signSight_model.h5")  # Make sure this file is in your repo
+model = load_model("signsight_model.h5")  # Make sure this file is in your repo
 
 @app.route('/')
 def home():
@@ -20,3 +20,4 @@ def predict():
     predicted_class = int(np.argmax(prediction, axis=1)[0])  # For classification models
     
     return jsonify({"prediction": predicted_class})
+
