@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SignSight Web Demo</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 40px; }
+    button { margin: 10px; padding: 15px 30px; font-size: 18px; }
+    #output { margin-top: 30px; font-size: 20px; }
+  </style>
+</head>
+<body>
+  <h1>SignSight: AI Gesture Translator</h1>
+  <p>Click a gesture to simulate translation and vibration feedback:</p>
+
+  <button onclick="translate('YES')">YES</button>
+  <button onclick="translate('NO')">NO</button>
+  <button onclick="translate('HELP')">HELP</button>
+  <button onclick="translate('FOOD')">FOOD</button>
+  <button onclick="translate('STOP')">STOP</button>
+
+  <div id="output"></div>
+
+  <script>
+    const patterns = {
+      "YES": "buzz-buzz",
+      "NO": "buzz...buzz",
+      "HELP": "buzz-buzz-buzz",
+      "FOOD": "buzz-buzz...buzz",
+      "STOP": "buzz---buzz"
+    };
+
+    function translate(text) {
+      const vibration = patterns[text] || "Unknown";
+      document.getElementById("output").innerHTML =
+        `<strong>Gesture:</strong> ${text}<br><strong>Vibration:</strong> ${vibration}`;
+    }
+  </script>
+</body>
+</html>
